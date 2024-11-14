@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+        }
+        .box {
+            border: solid 1px goldenrod;
+            height: 100px;
+            width: 100px;
+            /**居中**/
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+
+        }
+        .box:nth-child(1) {
+            background-color: coral;
+        }
+        .box:nth-child(2) {
+            background-color: yellow;
+        }
+        .container:hover .box:nth-child(2){
+            cursor: pointer;
+            transform: translateX(50px) translateY(50px);
+            transition: transform 1s ease;
+        }
+
+        .container:hover .box:nth-child(1){
+            cursor: pointer;
+            transform: translateX(-50px) translateY(-50px);
+            transition: transform 1s ease;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+</body>
+</html>

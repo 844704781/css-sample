@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 正方体缩放演示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .scene {
+            width: 200px;
+            height: 200px;
+            perspective: 600px;
+            margin-bottom: 20px;
+        }
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-22deg) rotateY(45deg);
+        }
+        .face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            opacity: 0.7;
+        }
+        .front  { transform: rotateY(0deg) translateZ(100px); background: red; }
+        .right  { transform: rotateY(90deg) translateZ(100px); background: green; }
+        .back   { transform: rotateY(180deg) translateZ(100px); background: blue; }
+        .left   { transform: rotateY(-90deg) translateZ(100px); background: yellow; }
+        .top    { transform: rotateX(90deg) translateZ(100px); background: purple; }
+        .bottom { transform: rotateX(-90deg) translateZ(100px); background: cyan; }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 300px;
+        }
+        label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        input[type="range"] {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="scene">
+    <div class="cube" id="cube">
+        <div class="face front">前</div>
+        <div class="face back">后</div>
+        <div class="face right">右</div>
+        <div class="face left">左</div>
+        <div class="face top">上</div>
+        <div class="face bottom">下</div>
+    </div>
+</div>
+<div class="controls">
+    <label>
+        X轴缩放: <input type="range" id="scaleX" min="0.5" max="2" step="0.01" value="1">
+        <span id="scaleXValue">1.00</span>
+    </label>
+    <label>
+        Y轴缩放: <input type="range" id="scaleY" min="0.5" max="2" step="0.01" value="1">
+        <span id="scaleYValue">1.00</span>
+    </label>
+    <label>
+        Z轴缩放: <input type="range" id="scaleZ" min="0.5" max="2" step="0.01" value="1">
+        <span id="scaleZValue">1.00</span>
+    </label>
+    <label>
+        X轴旋转: <input type="range" id="rotateX" min="-180" max="180" value="-22">
+        <span id="rotateXValue">-22°</span>
+    </label>
+    <label>
+        Y轴旋转: <input type="range" id="rotateY" min="-180" max="180" value="45">
+        <span id="rotateYValue">45°</span>
+    </label>
+</div>
+<script>
+    const cube = document.getElementById('cube');
+    const scaleX = document.getElementById('scaleX');
+    const scaleY = document.getElementById('scaleY');
+    const scaleZ = document.getElementById('scaleZ');
+    const rotateX = document.getElementById('rotateX');
+    const rotateY = document.getElementById('rotateY');
+    const scaleXValue = document.getElementById('scaleXValue');
+    const scaleYValue = document.getElementById('scaleYValue');
+    const scaleZValue = document.getElementById('scaleZValue');
+    const rotateXValue = document.getElementById('rotateXValue');
+    const rotateYValue = document.getElementById('rotateYValue');
+
+    function updateCube() {
+        const sx = scaleX.value;
+        const sy = scaleY.value;
+        const sz = scaleZ.value;
+        const rx = rotateX.value;
+        const ry = rotateY.value;
+
+        cube.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale3d(${sx}, ${sy}, ${sz})`;
+
+        scaleXValue.textContent = parseFloat(sx).toFixed(2);
+        scaleYValue.textContent = parseFloat(sy).toFixed(2);
+        scaleZValue.textContent = parseFloat(sz).toFixed(2);
+        rotateXValue.textContent = `${rx}°`;
+        rotateYValue.textContent = `${ry}°`;
+    }
+
+    scaleX.addEventListener('input', updateCube);
+    scaleY.addEventListener('input', updateCube);
+    scaleZ.addEventListener('input', updateCube);
+    rotateX.addEventListener('input', updateCube);
+    rotateY.addEventListener('input', updateCube);
+
+    updateCube();
+</script>
+</body>
+</html>

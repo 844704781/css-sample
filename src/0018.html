@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <style type="text/css">
+        .container{
+            display: flex;
+            border: 2px solid #333;
+            margin-bottom: 20px;
+            height: 100px;
+        }
+        .item{
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            margin: 5px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .item1{
+            flex: 0 0 100px; //固定
+        }
+        .item2{
+            flex: 0.5 0 100px; //可以增长，但是最多占用容器的一半
+        }
+        .item3{
+            flex: 0 1 1000px; //固定
+        }
+        .item4{
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+<div class="container container1">
+<!--    <div class="item item1">1</div>-->
+<!--    <div class="item item2">2</div>-->
+    <div class="item item3">3</div>
+<!--    <div class="item item4">4</div>-->
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #3498db;
+            height: 100vh;
+            width: 100vw;
+            transition: width 3s ease;
+
+            position: relative;
+        }
+        .box {
+            border: solid 1px goldenrod;
+            height: 100px;
+            width: 100px;
+            /**居中**/
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /*使用transform居中元素，这里的百分之比是相对盒子宽高的百分比*/
+            transform: translate(-50%,-50%);
+
+        }
+        .box:nth-child(1) {
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box"></div>
+</div>
+</body>
+</html>

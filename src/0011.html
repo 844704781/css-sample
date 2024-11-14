@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>盒子的浮动</title>
+    <style type="text/css">
+        .container{
+            border:solid 1px gray;
+            padding: 10px;
+        }
+        div{
+            border:solid 1px red;
+        }
+        .num1{
+            float: left;
+            padding: 15px;
+        }
+
+        .num3{
+            clear: both;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="num1">1</div>
+    <div class="num2">2</div>
+    <div class="num3">3</div>
+    <div class="num4">4</div>
+</div>
+<div>不影响我</div>
+</body>
+</html>
